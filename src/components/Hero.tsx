@@ -7,7 +7,7 @@ import FloatingContact from "./FloatingContact";
 
 const videoSources = [
   {
-    desktopUrl: "https://res.cloudinary.com/dsfwyhwfy/video/upload/f_auto,q_auto,w_720/v1746769314/webgrovia_liq7w6.mp4",
+    desktopUrl: "https://res.cloudinary.com/dsfwyhwfy/video/upload/f_auto,q_auto:best,w_1080/v1746769314/webgrovia_liq7w6.mp4",
     mobileUrl: "https://res.cloudinary.com/dsfwyhwfy/video/upload/f_auto,q_auto/v1746782636/webgrovia-vertical_y4snjt.mp4",
     title: "Innovative Solutions",
     description: "Pushing boundaries with cutting-edge technology",
