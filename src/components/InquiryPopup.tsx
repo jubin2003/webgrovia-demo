@@ -25,6 +25,9 @@ import {
   Contact,
   User,
   X,
+  LayoutGrid,
+  
+  Video,
 } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -67,22 +70,42 @@ const InquiryPopup = ({ isInitial = false }: InquiryPopupProps) => {
     }
   }, [isInitial]);
 
-  const handleSubmit = () => {
-    console.log("Inquiry submitted:", formData);
+  const [isLoading, setIsLoading] = useState(false);
 
-    toast({
-      title: "Inquiry received!",
-      description: "Our team will get back to you shortly.",
-    });
+  const handleSubmit = async () => {
+    if (!formData.name || !formData.email || !formData.phone || !formData.serviceType) {
+      toast({
+        title: "Missing information",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
 
-    setOpen(false);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      serviceType: "",
-      projectDetails: "",
-    });
+    setIsLoading(true);
+    try {
+      console.log("Inquiry submitted:", formData);
+      toast({
+        title: "Inquiry received!",
+        description: "Our team will get back to you shortly.",
+      });
+      setOpen(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        serviceType: "",
+        projectDetails: "",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to submit inquiry. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -91,15 +114,15 @@ const InquiryPopup = ({ isInitial = false }: InquiryPopupProps) => {
       const timer = setTimeout(() => {
         showPopup();
       }, 3000);
-
+  
       return () => clearTimeout(timer);
     }
-    // For recurring popup, show every 60 seconds
+    // For recurring popup, show every 5 minutes (300000ms)
     else {
       const interval = setInterval(() => {
         showPopup();
-      }, 120000);
-
+      }, 300000); // 5 minutes in milliseconds
+  
       return () => clearInterval(interval);
     }
   }, [isInitial, showPopup]);
@@ -108,7 +131,7 @@ const InquiryPopup = ({ isInitial = false }: InquiryPopupProps) => {
   const services = [
     {
       icon: <MessageCircle size={20} />,
-      name: "Web Development",
+      name: "Web Design & Development",
       color: "bg-blue-500/10 text-blue-500 border-blue-500/20",
     },
     {
@@ -122,25 +145,31 @@ const InquiryPopup = ({ isInitial = false }: InquiryPopupProps) => {
       color: "bg-pink-500/10 text-pink-500 border-pink-500/20",
     },
     {
-      icon: <MessageCircle size={20} />,
-      name: "Cloud Solutions",
+      icon: <LayoutGrid size={20} />,
+      name: "Poster & Billboard Design",
       color: "bg-green-500/10 text-green-500 border-green-500/20",
+    },
+  
+    {
+      icon: <Video size={20} />,
+      name: "Video Ads & Commercial Creation",
+      color: "bg-indigo-500/10 text-indigo-500 border-indigo-500/20",
     },
   ];
 
-  // Contact information
   const contactInfo = [
-    { icon: <Mail size={18} />, text: "hello@webgrovia.com" },
-    { icon: <Phone size={18} />, text: "+1 (555) 123-4567" },
-    { icon: <MapPin size={18} />, text: "San Francisco, CA" },
+    { icon: <Mail size={18} />, text: "webgrovia@gmail.com" },
+    { icon: <Phone size={18} />, text: "+91 9995965348" },
+    { icon: <MapPin size={18} />, text: "Kerala, India" },
   ];
 
+  // Update the Dialog content for better responsiveness
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="p-0 overflow-hidden border-0 shadow-xl sm:max-w-4xl w-[95vw] md:w-auto rounded-xl">
         <div className="flex flex-col md:flex-row w-full">
           {/* Left side - Modern bento grid */}
-          <div className="bg-gradient-to-br from-black to-gray-900 text-white p-6 md:p-8 md:w-2/5 relative overflow-hidden">
+          <div className="bg-gradient-to-br from-black to-gray-900 text-white p-4 sm:p-6 md:p-8 md:w-2/5 relative overflow-hidden">
             {/* Abstract background pattern */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 left-0 w-40 h-40 bg-blue-500 rounded-full filter blur-3xl"></div>
@@ -149,21 +178,21 @@ const InquiryPopup = ({ isInitial = false }: InquiryPopupProps) => {
             </div>
 
             <div className="relative z-10">
-              <h3 className="text-xl font-bold mb-5 text-white flex items-center gap-2">
+              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-5 text-white flex items-center gap-2">
                 <MessageCircle size={20} className="text-blue-400" />
                 Our Services
               </h3>
-
-              {/* Services bento grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+  
+              {/* Updated Services grid */}
+              <div className="grid grid-cols-2 xs:grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-6 sm:mb-8">
                 {services.map((service, idx) => (
                   <div
                     key={idx}
-                    className={`${service.color} p-3 rounded-lg border backdrop-blur-sm transition-all hover:scale-105 hover:shadow-lg`}
+                    className={`${service.color} p-2 sm:p-3 rounded-lg border backdrop-blur-sm transition-all hover:scale-105 hover:shadow-lg`}
                   >
                     <div className="flex items-center gap-2">
                       {service.icon}
-                      <span className="text-sm font-medium">
+                      <span className="text-xs sm:text-sm font-medium">
                         {service.name}
                       </span>
                     </div>
@@ -201,7 +230,7 @@ const InquiryPopup = ({ isInitial = false }: InquiryPopupProps) => {
           </div>
 
           {/* Right side - Form with improved UI */}
-          <div className="p-6 md:p-8 md:w-3/5 bg-white dark:bg-gray-950">
+          <div className="p-4 sm:p-6 md:p-8 md:w-3/5 bg-white dark:bg-gray-950">
             <DialogHeader className="relative">
               <button
                 onClick={() => setOpen(false)}
@@ -295,13 +324,13 @@ const InquiryPopup = ({ isInitial = false }: InquiryPopupProps) => {
                       <SelectValue placeholder="Select Service" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="webDev">Web Development</SelectItem>
-                      <SelectItem value="mobileDev">
-                        Mobile App Development
-                      </SelectItem>
+                      <SelectItem value="webDesignDev">Web Design & Development</SelectItem>
+                      <SelectItem value="mobileAppDev">Mobile App Development</SelectItem>
                       <SelectItem value="uiuxDesign">UI/UX Design</SelectItem>
-                      <SelectItem value="cloud">Cloud Solutions</SelectItem>
-                      <SelectItem value="ai">AI & Machine Learning</SelectItem>
+                      <SelectItem value="posterBillboardDesign">Poster & Billboard Design</SelectItem>
+                      <SelectItem value="brandingIdentity">Branding & Identity Design</SelectItem>
+                      <SelectItem value="digitalMarketing">Digital Marketing</SelectItem>
+                      <SelectItem value="videoAdsCommercials">Video Ads & Commercial Creation</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>

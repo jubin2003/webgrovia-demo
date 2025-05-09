@@ -11,6 +11,7 @@ import Footer from "../components/Footer";
 import InquiryPopup from "../components/InquiryPopup";
 import AppleCardCarousal from "../components/ui/apple-cards-carousel-demo";
 import { TextReveal } from "@/components/ui/text-reveal";
+import FloatingContact from "@/components/FloatingContact";
 
 
 const Index = () => {
@@ -49,7 +50,7 @@ const Index = () => {
 
       <main className="flex-grow flex flex-col">
         <Hero />
-
+        <FloatingContact />
         <TextReveal>
           Transforming ideas into digital excellence through innovative
           technology solutions and creative design

@@ -22,7 +22,7 @@ const presetAnswers: { [key: string]: string } = {
   "Do you offer custom solutions?":
     "Yes, we specialize in creating custom digital solutions that are tailored to your unique business needs and objectives.",
   "How can I contact support?":
-    "You can reach our support team through email at support@webgrovia.com or use this chat interface. We're available 24/7 to assist you.",
+    "You can reach our support team through email at webgrovia@gmail.com, call at +919995965348 or use this chat interface. We're available 24/7 to assist you.",
 };
 
 interface Message {

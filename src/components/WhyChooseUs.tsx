@@ -150,10 +150,12 @@ export default function WhyChooseUs() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-            Why Choose Us
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
+         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+  Why Choose Us
+</h2>
+
+<div className="w-24 h-1 bg-white mx-auto mb-6"></div>
+
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Experience excellence in every aspect of our service delivery
           </p>

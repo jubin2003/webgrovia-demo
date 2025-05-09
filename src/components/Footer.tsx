@@ -43,7 +43,6 @@ const Footer = () => {
               <li><a href="#" className="text-white/70 hover:text-white transition-colors">Home</a></li>
               <li><a href="#about" className="text-white/70 hover:text-white transition-colors">About Us</a></li>
               <li><a href="#services" className="text-white/70 hover:text-white transition-colors">Services</a></li>
-              <li><a href="#portfolio" className="text-white/70 hover:text-white transition-colors">Portfolio</a></li>
               <li><a href="#contact" className="text-white/70 hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
@@ -51,11 +50,14 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4">Services</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Web Development</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Mobile App Development</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-colors">UI/UX Design</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Cloud Solutions</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-colors">AI & Machine Learning</a></li>
+              <li><a href="#services" className="text-white/70 hover:text-white transition-colors">Web Development</a></li>
+              <li><a href="#services" className="text-white/70 hover:text-white transition-colors">Mobile App Development</a></li>
+              <li><a href="#services" className="text-white/70 hover:text-white transition-colors">UI/UX Design</a></li>
+              <li><a href="#services" className="text-white/70 hover:text-white transition-colors">Poster & Billboard Design</a></li>
+              <li><a href="#services" className="text-white/70 hover:text-white transition-colors">Branding & Identity Design</a></li>
+              <li><a href="#services" className="text-white/70 hover:text-white transition-colors">Digital Marketing</a></li>
+              <li><a href="#services" className="text-white/70 hover:text-white transition-colors">Video Ads & Commercial Creation</a></li>
+
             </ul>
           </div>
           

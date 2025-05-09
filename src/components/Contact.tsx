@@ -149,7 +149,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium mb-1">Email</h4>
-                  <p className="text-gray-400">contact@webgrovia.com</p>
+                  <p className="text-gray-400">webgrovia@gmail.com</p>
                 </div>
               </div>
             </div>
@@ -161,7 +161,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium mb-1">Phone</h4>
-                  <p className="text-gray-400">+1 (555) 123-4567</p>
+                  <p className="text-gray-400">+91 9995965348</p>
                 </div>
               </div>
             </div>
@@ -190,7 +190,7 @@ export default function Contact() {
           >
             <div className="relative h-[400px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.1034017704627!2d-122.4026684!3d37.787394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085807c1d9950d5%3A0xfe89e9eecb74bcd!2sSan%20Francisco%2C%20CA%2094107!5e0!3m2!1sen!2sus!4v1653863537496!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2008292.2472240678!2d74.81898144314678!3d10.544245568929972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0812ffd49cf55b%3A0x64bd90fbed387c99!2sKerala!5e0!3m2!1sen!2sin!4v1746765963492!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{
@@ -212,7 +212,7 @@ export default function Contact() {
                 <div>
                   <h4 className="font-medium mb-1">Location</h4>
                   <p className="text-gray-400">
-                    123 Digital Street, Tech City, TC 12345
+                    Kerala,India
                   </p>
                 </div>
               </div>

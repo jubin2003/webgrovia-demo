@@ -1,14 +1,14 @@
 "use client";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { Volume2, VolumeX, Pause, Play } from "lucide-react";
 import { SupportChat } from "@/components/ui/support-chat";
+import FloatingContact from "./FloatingContact";
 
 const videoSources = [
   {
-    url: "https://res.cloudinary.com/dsfwyhwfy/video/upload/v1746729795/0505_nbngyv.mp4",
+    desktopUrl: "https://res.cloudinary.com/dsfwyhwfy/video/upload/f_auto,q_auto,w_720/v1746769314/webgrovia_liq7w6.mp4",
+    mobileUrl: "https://res.cloudinary.com/dsfwyhwfy/video/upload/v1746769306/vertical_mrv2oo.mp4",
     title: "Innovative Solutions",
     description: "Pushing boundaries with cutting-edge technology",
   },
@@ -19,23 +19,17 @@ export default function Hero() {
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false); // Added state for scroll detection
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isMobile = window.innerWidth <= 768;
 
-  const handleVideoChange = (index: number) => {
-    setIsTransitioning(true);
-    setCurrentVideoIndex(index);
-    setIsMuted(true);
+  const handleVideoEnded = () => {
+    const nextIndex = (currentVideoIndex + 1) % videoSources.length;
+    setCurrentVideoIndex(nextIndex);
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
       videoRef.current.play();
     }
-    setTimeout(() => setIsTransitioning(false), 1000);
-  };
-
-  const handleVideoEnded = () => {
-    const nextIndex = (currentVideoIndex + 1) % videoSources.length;
-    handleVideoChange(nextIndex);
   };
 
   useEffect(() => {
@@ -45,9 +39,6 @@ export default function Hero() {
     const updateProgress = () => {
       const currentProgress = (video.currentTime / video.duration) * 100;
       setProgress(currentProgress);
-      if (video.duration - video.currentTime <= 2 && !isMuted) {
-        setIsMuted(true);
-      }
     };
 
     video.addEventListener("timeupdate", updateProgress);
@@ -57,7 +48,7 @@ export default function Hero() {
       video.removeEventListener("timeupdate", updateProgress);
       video.removeEventListener("ended", handleVideoEnded);
     };
-  }, [currentVideoIndex, isMuted]);
+  }, [currentVideoIndex]);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -74,18 +65,32 @@ export default function Hero() {
     }
   };
 
+  // Detect when the user scrolls past the hero section
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById("hero");
+      if (heroSection) {
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        setIsScrolled(heroBottom < 0); // Update scroll state
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Video Background */}
       <div className="absolute inset-0">
         {videoSources.map((video, index) => (
           <video
-            key={video.url}
+            key={video.desktopUrl}
             ref={index === currentVideoIndex ? videoRef : null}
-            src={video.url}
+            src={isMobile ? video.mobileUrl : video.desktopUrl}
             autoPlay
             muted={isMuted}
-            loop={false}
+            loop
             playsInline
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               index === currentVideoIndex ? "opacity-70" : "opacity-0"
@@ -96,15 +101,15 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
       </div>
 
-      {/* Content Bottom Left */}
-      <div className="absolute bottom-12 left-8 z-10 w-full max-w-3xl pr-4">
+      {/* Content - Updated for mobile centering */}
+      <div className="absolute z-10 w-full px-4 sm:px-8 sm:bottom-12 sm:left-8">
         <motion.div
           key={currentVideoIndex}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
-          className="text-left"
+          className="text-center sm:text-left max-w-3xl mx-auto sm:mx-0 flex flex-col items-center sm:items-start"
         >
           <h1 className="text-white font-bold tracking-tight mb-4 text-4xl sm:text-5xl md:text-6xl leading-tight">
             {videoSources[currentVideoIndex].title}
@@ -112,35 +117,11 @@ export default function Hero() {
           <p className="text-gray-300 mb-6 text-base sm:text-lg md:text-xl max-w-xl">
             {videoSources[currentVideoIndex].description}
           </p>
-          <div className="flex flex-wrap gap-4">
-            <Button
-              size="lg"
-              className={cn(
-                "bg-white text-black",
-                "hover:bg-gray-100",
-                "transition-all duration-300",
-                "shadow-lg hover:shadow-white/25"
-              )}
-            >
-              Get Started
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className={cn(
-                "border-white/20 text-white",
-                "hover:bg-white/10",
-                "transition-all duration-300"
-              )}
-            >
-              Learn More
-            </Button>
-          </div>
         </motion.div>
       </div>
 
       {/* Video Controls */}
-      <div className="absolute bottom-8 right-8 z-20 flex flex-col items-end gap-4">
+      <div className="absolute bottom-20 sm:bottom-8 right-8 z-20 flex flex-col items-end gap-4">
         <div className="w-48 h-1 bg-white/20 rounded-full overflow-hidden">
           <motion.div
             className="h-full bg-white"
@@ -177,46 +158,33 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Video Navigation Dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
-        {videoSources.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => handleVideoChange(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentVideoIndex
-                ? "bg-white w-8"
-                : "bg-white/40 hover:bg-white/60"
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* Floating Decorative Elements */}
-      <div className="absolute inset-0 -z-10">
-        {[...Array(5)].map((_, i) => (
+      {/* Scroll Down Icon */}
+      <div className="absolute bottom-20 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center">
+        <motion.p
+          className="text-white/70 text-sm mb-2 uppercase tracking-widest"
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          Scroll Down
+        </motion.p>
+        <motion.div
+          className="w-6 h-10 border-2 border-white/20 rounded-full p-1"
+          initial={{ y: 0 }}
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
           <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-white rounded-full"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.5, 1, 0.5],
-            }}
-            transition={{
-              duration: 3 + i,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            className="w-1.5 h-1.5 bg-white rounded-full mx-auto"
+            animate={{ y: [0, 16, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
           />
-        ))}
+        </motion.div>
       </div>
 
       {/* Support Chat */}
       <SupportChat />
+      <FloatingContact/>
+     
     </section>
   );
 }

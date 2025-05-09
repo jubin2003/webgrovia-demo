@@ -19,10 +19,11 @@ export default function FAQ() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-            Frequently Asked Questions
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
+         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
+  Frequently Asked Questions
+</h2>
+<div className="w-24 h-1 bg-black mx-auto mb-6"></div>
+
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Find answers to common questions about our services and process
           </p>

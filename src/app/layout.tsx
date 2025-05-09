@@ -1,5 +1,6 @@
 import { ContactIcons } from "@/components/ui/contact-icons";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import Navbar from "@/components/Navbar";
 
 export default function RootLayout({
   children,
@@ -9,9 +10,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
-        <ContactIcons />
-        <SmoothCursor />
+        <Navbar />
+        <main className="pt-16">
+          {children}
+        </main>
       </body>
     </html>
   );
