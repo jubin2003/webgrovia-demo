@@ -34,7 +34,7 @@ export default function FloatingContact() {
         <div className="relative flex items-center justify-center w-12 h-12 bg-green-500 rounded-full hover:bg-green-600 transition-colors shadow-lg">
           {/* WhatsApp Icon from the public folder */}
           <img
-            src="/whatsapp.png"  // Assuming you have the WhatsApp icon saved in the public/icons folder
+            src="https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto/whatsapp_bbjys9.png"  // Assuming you have the WhatsApp icon saved in the public/icons folder
             alt="WhatsApp"
             className="w-12 h-12"
           />

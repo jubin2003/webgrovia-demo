@@ -21,67 +21,67 @@ const data: ServiceData[] = [
   {
     category: "Web Design & Development",
     title: "Websites That Work and Wow.",
-    src: "/website.png",
+    src: "https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto,w_600/website_ccxcte.png",
     content: {
       title: "Fast, Modern, Responsive Websites",
       description:
         "We design and develop high-performing websites tailored to convert and captivate your audience — optimized for all devices.",
-      image: "/web-design.png",
+      image: "https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto,w_600/web-design_cb9qmu.png",
     },
   },
   {
     category: "App Development",
     title: "Powerful Mobile Apps, Built Right.",
-    src: "/mobile app.png",
+    src: "https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto,w_600/mobile_app_o7lbrl.png",
     content: {
       title: "Custom iOS & Android App Development",
       description:
         "From prototypes to polished products, we build scalable, intuitive apps that deliver seamless experiences on every device.",
-      image: "/app-development.png",
+      image: "https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto,w_600/app-development_yctjxz.png",
     },
   },
   {
     category: "Poster & Billboard Design",
     title: "Designs That Stand Tall.",
-    src: "/poster_design.png",
+    src: "https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto,w_600/poster_design_d2sssn.png",
     content: {
       title: "Eye-Catching Posters & Billboards",
       description:
         "We craft bold and effective visual campaigns, placing your brand on real-world billboards and street posters that turn heads.",
-      image: "/posterdesign.png",
+      image: "https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto,w_600/poster-design_glaarm.png",
     },
   },
   {
     category: "Video Ads Creation",
     title: "Video Content That Converts.",
-    src: "/ad.png",
+    src: "https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto,w_600/video-ads_lw9ve0.png",
     content: {
       title: "Cinematic Ads & Commercial Videos",
       description:
         "We produce professional video ads that capture attention, tell your story, and drive engagement across all platforms.",
-      image: "/video-ads.png",
+      image: "https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto,w_600/74c157a9-4cda-4083-bd85-2b56a9f0db58_lyys5v.png",
     },
   },
   {
     category: "Branding",
     title: "Build a Brand That Lasts.",
-    src: "/branding.png",
+    src: "https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto,w_300/logo-branding_v8z11c.png",
     content: {
       title: "Identity, Logo & Visual Strategy",
       description:
         "From logo design to full brand systems, we help you create a strong, recognizable identity that connects with your audience.",
-      image: "/logo-branding.png",
+      image: "https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto,w_300/branding-logo_wqnhek.png",
     },
   },
   {
     category: "Digital Marketing",
     title: "Marketing That Drives Growth.",
-    src: "/digital_marketing.png",
+    src: "https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto,w_600/digital-marketing_pre9zh.png",
     content: {
       title: "SEO, Social Media & Paid Ads",
       description:
         "Reach your ideal customers with smart digital strategies — SEO, PPC, email, and social media campaigns that deliver real results.",
-      image: "/digital-marketing.png",
+      image: "https://res.cloudinary.com/dsfwyhwfy/image/upload/f_auto,q_auto,w_600/59e7b952-158f-4e03-b702-97e7a3961a7b_uzajac.png",
     },
   },
 ];
@@ -128,9 +128,9 @@ const ServiceContent = ({
       </button>
 
       <div className="text-center px-4 md:px-10">
-      <h3 className="text-2xl md:text-5xl font-extrabold text-black mb-4 leading-tight tracking-tight">
-  {title}
-</h3>
+        <h3 className="text-2xl md:text-5xl font-extrabold text-black mb-4 leading-tight tracking-tight">
+          {title}
+        </h3>
 
         <p className="text-base md:text-lg text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto font-medium mb-6">
           {description}
@@ -141,19 +141,18 @@ const ServiceContent = ({
           className="mt-4 mx-auto w-full max-w-[320px] md:max-w-md object-contain rounded-xl"
         />
         <div className="mt-8">
-        <Button
-  className="bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-full transform hover:scale-105 transition-all duration-300 shadow-lg"
-  onClick={() =>
-    window.open(
-      "https://wa.me/919995965348?text=Hi!%20I'm%20interested%20in%20booking%20a%20free%20consultation.",
-      "_blank"
-    )
-  }
->
-  <Sparkles className="mr-2 h-4 w-4" />
-  Book a Free Consultation
-</Button>
-
+          <Button
+            className="bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-full transform hover:scale-105 transition-all duration-300 shadow-lg"
+            onClick={() =>
+              window.open(
+                "https://wa.me/919995965348?text=Hi!%20I'm%20interested%20in%20booking%20a%20free%20consultation.",
+                "_blank"
+              )
+            }
+          >
+            <Sparkles className="mr-2 h-4 w-4" />
+            Book a Free Consultation
+          </Button>
         </div>
       </div>
     </motion.div>

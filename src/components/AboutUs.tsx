@@ -4,7 +4,7 @@ import { IconTarget, IconRocket, IconUsers } from "@tabler/icons-react";
 
 export default function AboutModern() {
   return (
-    <section id="about" className="bg-white text-gray-900 py-12 sm:py-24">
+    <section id="about-us" className="bg-white text-gray-900 py-12 sm:py-24">
       <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Text Content */}

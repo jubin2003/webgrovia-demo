@@ -67,11 +67,7 @@ const Index = () => {
 
       <Footer />
 
-      {/* Initial popup on page load */}
-      <InquiryPopup isInitial={true} />
-
-      {/* Recurring popup every 20 seconds */}
-      <InquiryPopup />
+  
     </div>
   );
 };

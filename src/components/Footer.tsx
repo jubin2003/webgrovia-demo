@@ -41,7 +41,7 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><a href="#" className="text-white/70 hover:text-white transition-colors">Home</a></li>
-              <li><a href="#about" className="text-white/70 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#about-us" className="text-white/70 hover:text-white transition-colors">About Us</a></li>
               <li><a href="#services" className="text-white/70 hover:text-white transition-colors">Services</a></li>
               <li><a href="#contact" className="text-white/70 hover:text-white transition-colors">Contact</a></li>
             </ul>
@@ -87,8 +87,8 @@ const Footer = () => {
             © {currentYear} Webgrovia. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-white/50 hover:text-white text-sm transition-colors">Privacy Policy</a>
-            <a href="#" className="text-white/50 hover:text-white text-sm transition-colors">Terms of Service</a>
+          <a href="/PrivacyPolicy.tsx" className="text-white/50 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                      <a href="#" className="text-white/50 hover:text-white text-sm transition-colors">Terms of Service</a>
             <a href="#" className="text-white/50 hover:text-white text-sm transition-colors">Cookies Policy</a>
           </div>
         </div>

@@ -110,7 +110,7 @@ const itemVariants = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 bg-black text-white relative overflow-hidden">
+    <section id="why-choose-us" className="py-24 bg-black text-white relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black opacity-50"></div>
 
