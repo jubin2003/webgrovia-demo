@@ -2,14 +2,6 @@
   command = "bun run build"
   publish = "dist"
 
-# Optional: Set environment variables
 [build.environment]
-  NODE_VERSION = "18"  # or "20" depending on your compatibility
-  BUN_VERSION = "1.0.0"  # use the version you want
-
-# Optional: ignore Next.js plugin
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-  # Disable the plugin if still installed
-  [plugins.inputs]
-    enabled = false
+  NODE_VERSION = "18"
+  BUN_VERSION = "1.0.0"
