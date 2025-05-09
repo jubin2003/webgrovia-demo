@@ -1,12 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import {
-  IconMail,
-  IconPhone,
-  IconMapPin,
-  IconSend,
-  IconClock,
-} from "@tabler/icons-react";
+import { IconMail, IconPhone, IconMapPin, IconSend, IconClock } from "@tabler/icons-react";
 import { useState } from "react";
 
 export default function Contact() {
@@ -15,25 +9,48 @@ export default function Contact() {
     lastName: "",
     email: "",
     message: "",
+    userPhone: "", // User's phone number
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
+
+    // Prepare the message to be sent
+    const message = `*Hello!* 👋
+
+I'm *${formData.firstName} ${formData.lastName}* and I would love to connect with you! Here's a bit about me:
+
+📧 **Email:** ${formData.email}  
+📞 **Phone:** ${formData.userPhone}  
+💬 **Message:**  
+"${formData.message}"
+
+Looking forward to hearing from you! 😊`;
+
+    // Encode the message to be URL-safe
+    const encodedMessage = encodeURIComponent(message);
+
+    // Your WhatsApp number (replace this with your actual number)
+    const yourPhoneNumber = "+919995965348";
+
+    // WhatsApp URL with your phone number and the user's message
+    const whatsappURL = `https://wa.me/${yourPhoneNumber}?text=${encodedMessage}`;
+
+    // Open WhatsApp link
+    window.open(whatsappURL, "_blank");
+
     // Reset form after submission
     setFormData({
       firstName: "",
       lastName: "",
       email: "",
       message: "",
+      userPhone: "", // Reset the user's phone number
     });
   };
 
@@ -110,6 +127,19 @@ export default function Contact() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Your Phone Number 
+                </label>
+                <input
+                  type="text"
+                  name="userPhone"
+                  value={formData.userPhone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white focus:border-white focus:ring-2 focus:ring-zinc-600 transition-all duration-300"
+                  placeholder="Your phone number"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
                   Message
                 </label>
                 <textarea
@@ -122,6 +152,7 @@ export default function Contact() {
                   required
                 ></textarea>
               </div>
+              
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.02 }}
@@ -212,7 +243,7 @@ export default function Contact() {
                 <div>
                   <h4 className="font-medium mb-1">Location</h4>
                   <p className="text-gray-400">
-                    Kerala,India
+                    Kerala, India
                   </p>
                 </div>
               </div>
